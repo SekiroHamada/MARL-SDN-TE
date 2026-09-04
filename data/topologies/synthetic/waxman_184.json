@@ -1,0 +1,198 @@
+{
+    "directed": false,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "pos": [
+                0.7615617989179985,
+                0.2394679519551427
+            ],
+            "id": 0
+        },
+        {
+            "pos": [
+                0.8946642976914577,
+                0.037941291812198075
+            ],
+            "id": 1
+        },
+        {
+            "pos": [
+                0.8938781363390919,
+                0.21185501292393116
+            ],
+            "id": 2
+        },
+        {
+            "pos": [
+                0.7666494873672063,
+                0.7815089780411633
+            ],
+            "id": 3
+        },
+        {
+            "pos": [
+                0.03901167878768963,
+                0.014035472729064025
+            ],
+            "id": 4
+        },
+        {
+            "pos": [
+                0.8499620762536912,
+                0.760295480729118
+            ],
+            "id": 5
+        },
+        {
+            "pos": [
+                0.09639180750132259,
+                0.5542586145609921
+            ],
+            "id": 6
+        },
+        {
+            "pos": [
+                0.49473204324592923,
+                0.7005157391284585
+            ],
+            "id": 7
+        },
+        {
+            "pos": [
+                0.36600658420188126,
+                0.9648880657123536
+            ],
+            "id": 8
+        },
+        {
+            "pos": [
+                0.5894265423317682,
+                0.6550413684872401
+            ],
+            "id": 9
+        }
+    ],
+    "edges": [
+        {
+            "capacity": 100,
+            "delay": 4,
+            "queue": 100,
+            "source": 0,
+            "target": 1
+        },
+        {
+            "capacity": 100,
+            "delay": 3,
+            "queue": 100,
+            "source": 0,
+            "target": 3
+        },
+        {
+            "capacity": 100,
+            "delay": 8,
+            "queue": 100,
+            "source": 0,
+            "target": 4
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 0,
+            "target": 5
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 1,
+            "target": 2
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 1,
+            "target": 3
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 1,
+            "target": 4
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 1,
+            "target": 5
+        },
+        {
+            "capacity": 100,
+            "delay": 10,
+            "queue": 100,
+            "source": 1,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 8,
+            "queue": 100,
+            "source": 3,
+            "target": 7
+        },
+        {
+            "capacity": 100,
+            "delay": 7,
+            "queue": 100,
+            "source": 3,
+            "target": 8
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 3,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 4,
+            "target": 6
+        },
+        {
+            "capacity": 100,
+            "delay": 4,
+            "queue": 100,
+            "source": 4,
+            "target": 8
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 4,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 5,
+            "target": 7
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 5,
+            "target": 8
+        }
+    ]
+}

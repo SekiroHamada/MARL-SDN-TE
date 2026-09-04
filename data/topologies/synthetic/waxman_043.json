@@ -1,0 +1,282 @@
+{
+    "directed": false,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "pos": [
+                0.3371896473943282,
+                0.3194755904219191
+            ],
+            "id": 0
+        },
+        {
+            "pos": [
+                0.3235371674965041,
+                0.34575000365230557
+            ],
+            "id": 1
+        },
+        {
+            "pos": [
+                0.6467787211857167,
+                0.18178178556260616
+            ],
+            "id": 2
+        },
+        {
+            "pos": [
+                0.8444157405502984,
+                0.5365251887516337
+            ],
+            "id": 3
+        },
+        {
+            "pos": [
+                0.0065811488895307635,
+                0.12434781019204166
+            ],
+            "id": 4
+        },
+        {
+            "pos": [
+                0.08220184989223378,
+                0.09704105112393424
+            ],
+            "id": 5
+        },
+        {
+            "pos": [
+                0.5398436125373602,
+                0.5232628057049223
+            ],
+            "id": 6
+        },
+        {
+            "pos": [
+                0.739760086696298,
+                0.9977998271588437
+            ],
+            "id": 7
+        },
+        {
+            "pos": [
+                0.7232899297713722,
+                0.9001095750030654
+            ],
+            "id": 8
+        },
+        {
+            "pos": [
+                0.6964790614635634,
+                0.6909470694478728
+            ],
+            "id": 9
+        },
+        {
+            "pos": [
+                0.5090209054875918,
+                0.7904248420671974
+            ],
+            "id": 10
+        },
+        {
+            "pos": [
+                0.890461490915896,
+                0.46927685693688437
+            ],
+            "id": 11
+        }
+    ],
+    "edges": [
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 0,
+            "target": 1
+        },
+        {
+            "capacity": 100,
+            "delay": 10,
+            "queue": 100,
+            "source": 0,
+            "target": 4
+        },
+        {
+            "capacity": 100,
+            "delay": 10,
+            "queue": 100,
+            "source": 0,
+            "target": 5
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 0,
+            "target": 6
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 0,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 8,
+            "queue": 100,
+            "source": 0,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 1,
+            "target": 3
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 1,
+            "target": 5
+        },
+        {
+            "capacity": 100,
+            "delay": 7,
+            "queue": 100,
+            "source": 1,
+            "target": 6
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 2,
+            "target": 3
+        },
+        {
+            "capacity": 100,
+            "delay": 10,
+            "queue": 100,
+            "source": 2,
+            "target": 4
+        },
+        {
+            "capacity": 100,
+            "delay": 7,
+            "queue": 100,
+            "source": 2,
+            "target": 7
+        },
+        {
+            "capacity": 100,
+            "delay": 3,
+            "queue": 100,
+            "source": 2,
+            "target": 8
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 2,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 4,
+            "queue": 100,
+            "source": 4,
+            "target": 5
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 4,
+            "target": 6
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 4,
+            "target": 10
+        },
+        {
+            "capacity": 100,
+            "delay": 8,
+            "queue": 100,
+            "source": 4,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 5,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 6,
+            "target": 10
+        },
+        {
+            "capacity": 100,
+            "delay": 8,
+            "queue": 100,
+            "source": 6,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 7,
+            "target": 8
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 7,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 8,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 8,
+            "target": 10
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 9,
+            "target": 10
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 10,
+            "target": 11
+        }
+    ]
+}
