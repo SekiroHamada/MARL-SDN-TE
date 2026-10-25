@@ -1,0 +1,27 @@
+[mappo] upd    1 R +0.3214 EV -0.04 kl 0.0041 clip 0.05 val  4s
+[mappo] upd   10 R +0.2677 EV +0.57 kl 0.0048 clip 0.07 val  35s
+[mappo] upd   20 R +0.3314 EV +0.48 kl 0.0045 clip 0.05 val  69s
+[mappo] upd   30 R +0.3396 EV +0.50 kl 0.0056 clip 0.06 val  106s
+[mappo] upd   40 R +0.3075 EV +0.70 kl 0.0050 clip 0.07 val  141s
+[mappo] upd   50 R +0.2558 EV +0.58 kl 0.0047 clip 0.06 val 0.31107642921378637 177s
+[mappo] upd   60 R +0.3679 EV +0.66 kl 0.0032 clip 0.04 val  211s
+[mappo] upd   70 R +0.3040 EV +0.35 kl 0.0064 clip 0.07 val  246s
+[mappo] upd   80 R +0.3161 EV +0.58 kl 0.0052 clip 0.06 val  282s
+[mappo] upd   90 R +0.3757 EV +0.42 kl 0.0032 clip 0.06 val  316s
+[mappo] upd  100 R +0.3162 EV +0.62 kl 0.0043 clip 0.06 val 0.33412243731986596 354s
+[mappo] upd  110 R +0.3490 EV +0.52 kl 0.0046 clip 0.06 val  389s
+[mappo] upd  120 R +0.3268 EV +0.68 kl 0.0046 clip 0.06 val  424s
+[mappo] upd  130 R +0.3789 EV +0.59 kl 0.0043 clip 0.05 val  462s
+[mappo] upd  140 R +0.3682 EV +0.52 kl 0.0039 clip 0.05 val  497s
+[mappo] upd  150 R +0.3508 EV +0.63 kl 0.0027 clip 0.05 val 0.3302714708213637 535s
+[mappo] upd  160 R +0.3554 EV +0.56 kl 0.0038 clip 0.05 val  570s
+[mappo] upd  170 R +0.3247 EV +0.62 kl 0.0044 clip 0.04 val  606s
+[mappo] upd  180 R +0.3522 EV +0.51 kl 0.0025 clip 0.03 val  644s
+[mappo] upd  190 R +0.3337 EV +0.57 kl 0.0031 clip 0.04 val  680s
+[mappo] upd  200 R +0.3254 EV +0.59 kl 0.0026 clip 0.02 val 0.34395943532659506 717s
+[mappo] upd  210 R +0.2940 EV +0.60 kl 0.0032 clip 0.02 val  752s
+[mappo] upd  220 R +0.2997 EV +0.78 kl 0.0017 clip 0.01 val  788s
+[mappo] upd  230 R +0.3310 EV +0.43 kl 0.0004 clip 0.01 val  825s
+[mappo] upd  240 R +0.3425 EV +0.76 kl 0.0006 clip 0.00 val  861s
+[mappo] upd  250 R +0.3871 EV +0.49 kl 0.0000 clip 0.00 val 0.3448243211216093 898s
+seed 1: best validation reward 0.3470

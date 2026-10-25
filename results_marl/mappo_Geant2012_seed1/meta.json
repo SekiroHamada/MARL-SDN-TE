@@ -1,0 +1,10 @@
+{
+ "algo": "mappo",
+ "topology": "Geant2012",
+ "seed": 1,
+ "best_val_reward": 0.34698486153551716,
+ "overrides": {
+  "seed": 1,
+  "scenario": "pareto"
+ }
+}

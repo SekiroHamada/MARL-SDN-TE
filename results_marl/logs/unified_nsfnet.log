@@ -1,0 +1,15 @@
+nsfnet     OSPF                         done
+nsfnet     ECMP                         done
+nsfnet     ECMP-hop                     done
+nsfnet     LP-oracle(mean TM)           done
+nsfnet     M2 GNN zero-shot (seed0)     done
+nsfnet     M2 GNN zero-shot (seed1)     done
+nsfnet     M1 IPPO (seed0)              done
+nsfnet     M1 IPPO (seed1)              done
+nsfnet     M1 IPPO (seed2)              done
+nsfnet     M3 MAPPO (seed0)             done
+nsfnet     M3 MAPPO (seed1)             done
+nsfnet     M3 MAPPO (seed2)             done
+nsfnet     M3 MADDPG (seed0)            done
+nsfnet     M3 MADDPG (seed1)            done
+nsfnet     M3 MADDPG (seed2)            done

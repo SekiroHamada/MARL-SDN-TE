@@ -1,0 +1,10 @@
+{
+ "algo": "iql",
+ "topology": "nsfnet",
+ "seed": 0,
+ "best_val_reward": 0.28255320059917216,
+ "overrides": {
+  "seed": 0,
+  "scenario": "pareto"
+ }
+}

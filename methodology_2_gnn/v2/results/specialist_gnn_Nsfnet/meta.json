@@ -1,0 +1,5 @@
+{
+ "best_val_reward": 0.3226338928105629,
+ "topology": "Nsfnet",
+ "model": "gnn"
+}

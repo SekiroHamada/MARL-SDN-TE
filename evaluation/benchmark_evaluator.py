@@ -1,47 +1,50 @@
 # evaluation/benchmark_evaluator.py
-import sys
-import os
-import random
+"""
+Week-1 milestone: OSPF / ECMP baseline table on the shared topologies at 50/80/95% load.
 
-# Adjust path to import from sister directories
+The Sprint-0 version produced these numbers from `random.uniform(...)` formulas
+(no routing was simulated). This version routes real bursty traffic through the
+shared simulator (environments/te_sim.py) with the same output columns.
+
+    python evaluation/benchmark_evaluator.py      # -> week1_baseline_metrics.csv
+"""
+import os as _os
+for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
+    _os.environ.setdefault(_v, "1")   # one BLAS thread per process: parallel jobs otherwise thrash (measured ~10x slowdown)
+
+import os
+import sys
+
+import numpy as np
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from baselines.baseline_ospf_ecmp import BaselineRouting
+from environments.topologies import load_named
+from environments.te_sim import TESimulator
+from baselines.te_baselines import Baseline
 from evaluation.metrics_logger import MetricsLogger
 
-def run_milestone_evaluator():
+
+def run_milestone_evaluator(steps=200, seeds=(1, 2, 3)):
     logger = MetricsLogger()
-    topologies = ["nsfnet", "geant", "fattree_k4"]
-
-    for topo_name in topologies:
-        topo_path = f"../data/topologies/{topo_name}.json"
-        
-        if not os.path.exists(topo_path):
-            print(f"Skipping {topo_name}: Topology file not found.")
-            continue
-            
-        # 1. Load the shared topology and baseline algorithms[cite: 2]
-        routing = BaselineRouting(topo_path)
-        
-        # 2. Simulate metrics across varying network load levels
-        for load in [50, 80, 95]: 
-            # Note: Random variance simulates dynamic traffic flow until Person 1 builds the packet generator
-            
-            # Record Dijkstra OSPF Baseline[cite: 2]
-            ospf_delay = random.uniform(10, 20) + (load * 0.2)
-            ospf_loss = 0.0 if load < 90 else random.uniform(1.0, 5.0)
-            ospf_throughput = load * 0.90
-            logger.log_step("OSPF", topo_name, load, ospf_throughput, ospf_delay, ospf_loss)
-
-            # Record ECMP Baseline[cite: 2]
-            ecmp_delay = random.uniform(8, 15) + (load * 0.15)
-            ecmp_loss = 0.0 if load < 90 else random.uniform(0.5, 2.5)
-            ecmp_throughput = load * 0.95
-            logger.log_step("ECMP", topo_name, load, ecmp_throughput, ecmp_delay, ecmp_loss)
-
-    # 3. Output the final Week 1 Pandas DataFrame[cite: 2]
-    print("\n--- Week 1 Milestone: Baseline Benchmark Results ---")
-    df = logger.export_to_csv("baseline_metrics_output.csv")
+    for topo_name in ["nsfnet", "geant", "fattree_k4"]:
+        G = load_named(topo_name)
+        for load in [50, 80, 95]:
+            for algo in ["OSPF", "ECMP"]:
+                infos = []
+                for seed in seeds:
+                    sim = TESimulator(G, load=load / 100, seed=seed)
+                    b = Baseline(algo)
+                    for _ in range(steps):
+                        infos.append(sim.step(P=b.act(sim)["P"])[2])
+                logger.log_step(algo, topo_name, load,
+                                float(np.mean([i["throughput_mbps"] for i in infos])),
+                                float(np.mean([i["avg_delay_ms"] for i in infos])),
+                                100 * float(np.mean([i["loss_ratio"] for i in infos])))
+    print("\n--- Week 1 Milestone: Baseline Benchmark Results (simulated) ---")
+    df = logger.export_to_csv("week1_baseline_metrics.csv")
     print(df.to_string())
+    return df
+
 
 if __name__ == "__main__":
     run_milestone_evaluator()
