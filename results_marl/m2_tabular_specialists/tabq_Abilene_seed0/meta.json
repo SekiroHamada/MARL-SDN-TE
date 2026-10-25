@@ -1,0 +1,10 @@
+{
+ "algo": "tabq",
+ "topology": "Abilene",
+ "seed": 0,
+ "best_val_reward": 0.17615361823967637,
+ "overrides": {
+  "seed": 0,
+  "scenario": "pareto"
+ }
+}

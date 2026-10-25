@@ -1,0 +1,11 @@
+Geant2012  OSPF                         done
+Geant2012  ECMP                         done
+Geant2012  ECMP-hop                     done
+Geant2012  LP-oracle(mean TM)           done
+Geant2012  M2 GNN zero-shot (seed0)     done
+Geant2012  M2 GNN zero-shot (seed1)     done
+Geant2012  M2 GNN specialist            done
+Geant2012  M2 MLP specialist            done
+Geant2012  M1 IPPO (seed0)              done
+Geant2012  M3 MAPPO (seed0)             done
+Geant2012  M3 MADDPG (seed0)            done

@@ -1,0 +1,10 @@
+GNN params: 221,189 | train pool 400 synthetic graphs (mean deg 2.96)
+[gnn] upd    1 | R +0.3076 loss 0.79% d 31.2ms | kl 0.0015 clip 0.01 std 0.366 | val  | 7s
+[gnn] upd   10 | R +0.2290 loss 2.10% d 27.1ms | kl 0.0013 clip 0.01 std 0.348 | val  | 75s
+[gnn] upd   20 | R +0.2418 loss 1.63% d 29.5ms | kl 0.0017 clip 0.01 std 0.330 | val  | 154s
+[gnn] upd   30 | R +0.2758 loss 1.10% d 27.5ms | kl 0.0022 clip 0.01 std 0.323 | val  | 236s
+[gnn] upd   40 | R +0.3549 loss 0.48% d 27.1ms | kl 0.0023 clip 0.02 std 0.299 | val  | 312s
+[gnn] upd   50 | R +0.3067 loss 0.50% d 27.9ms | kl 0.0022 clip 0.02 std 0.276 | val 0.3184 | 392s
+[gnn] upd   60 | R +0.3736 loss 0.41% d 29.6ms | kl 0.0030 clip 0.03 std 0.259 | val  | 459s
+[gnn] upd   70 | R +0.2874 loss 0.51% d 27.1ms | kl 0.0042 clip 0.04 std 0.241 | val  | 532s
+[gnn] upd   80 | R +0.3328 loss 0.82% d 27.6ms | kl 0.0030 clip 0.03 std 0.226 | val  | 616s

@@ -1,0 +1,10 @@
+{
+ "algo": "qmix",
+ "topology": "nsfnet",
+ "seed": 1,
+ "best_val_reward": 0.21007478894313292,
+ "overrides": {
+  "seed": 1,
+  "scenario": "pareto"
+ }
+}

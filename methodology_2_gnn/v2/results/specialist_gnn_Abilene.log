@@ -1,0 +1,22 @@
+GNN specialist on Abilene (11 nodes, 14 links) params 221,189
+[gnn] upd    1 | R +0.1738 loss 1.89% d 18.4ms | kl 0.0015 clip 0.01 std 0.367 | val  | 2s
+[gnn] upd   10 | R +0.1275 loss 2.12% d 18.6ms | kl 0.0023 clip 0.02 std 0.337 | val  | 24s
+[gnn] upd   20 | R +0.3093 loss 0.50% d 15.0ms | kl 0.0030 clip 0.02 std 0.312 | val  | 48s
+[gnn] upd   30 | R +0.1798 loss 1.39% d 18.1ms | kl 0.0034 clip 0.03 std 0.298 | val  | 72s
+[gnn] upd   40 | R +0.3181 loss 0.34% d 15.0ms | kl 0.0036 clip 0.03 std 0.277 | val  | 95s
+[gnn] upd   50 | R +0.3324 loss 0.36% d 15.0ms | kl 0.0056 clip 0.03 std 0.256 | val 0.2671 | 119s
+[gnn] upd   60 | R +0.3210 loss 0.46% d 14.9ms | kl 0.0061 clip 0.04 std 0.241 | val  | 143s
+[gnn] upd   70 | R +0.2931 loss 0.37% d 15.9ms | kl 0.0058 clip 0.05 std 0.231 | val  | 167s
+[gnn] upd   80 | R +0.2761 loss 0.76% d 16.1ms | kl 0.0045 clip 0.04 std 0.217 | val  | 191s
+[gnn] upd   90 | R +0.2924 loss 0.68% d 16.2ms | kl 0.0075 clip 0.06 std 0.206 | val  | 214s
+[gnn] upd  100 | R +0.1798 loss 1.73% d 17.7ms | kl 0.0070 clip 0.06 std 0.192 | val 0.2562 | 239s
+[gnn] upd  110 | R +0.2242 loss 1.23% d 17.5ms | kl 0.0064 clip 0.06 std 0.183 | val  | 263s
+[gnn] upd  120 | R +0.2930 loss 0.37% d 15.2ms | kl 0.0045 clip 0.05 std 0.176 | val  | 288s
+[gnn] upd  130 | R +0.3110 loss 0.40% d 16.3ms | kl 0.0073 clip 0.06 std 0.169 | val  | 314s
+[gnn] upd  140 | R +0.2631 loss 1.15% d 16.4ms | kl 0.0090 clip 0.07 std 0.160 | val  | 339s
+[gnn] upd  150 | R +0.1943 loss 1.84% d 16.3ms | kl 0.0045 clip 0.05 std 0.155 | val 0.2693 | 364s
+[gnn] upd  160 | R +0.2495 loss 1.57% d 15.8ms | kl 0.0026 clip 0.05 std 0.152 | val  | 388s
+[gnn] upd  170 | R +0.3278 loss 0.38% d 15.0ms | kl 0.0027 clip 0.04 std 0.150 | val  | 412s
+[gnn] upd  180 | R +0.3018 loss 0.54% d 15.2ms | kl 0.0053 clip 0.03 std 0.148 | val  | 437s
+[gnn] upd  190 | R +0.2472 loss 1.32% d 15.7ms | kl 0.0018 clip 0.02 std 0.147 | val  | 461s
+[gnn] upd  200 | R +0.2919 loss 0.83% d 15.4ms | kl -0.0000 clip 0.00 std 0.146 | val 0.2831 | 485s

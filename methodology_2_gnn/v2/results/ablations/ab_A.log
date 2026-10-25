@@ -1,0 +1,7 @@
+GNN specialist on Geant2012 (40 nodes, 61 links) params 221,189
+[gnn] upd    1 | R +0.3210 loss 0.37% d 17.5ms | kl 0.4959 clip 0.35 std 0.358 | val  | 13s
+[gnn] upd   10 | R +0.2841 loss 0.66% d 18.4ms | kl 0.0854 clip 0.29 std 0.277 | val  | 123s
+[gnn] upd   20 | R +0.3246 loss 0.75% d 17.3ms | kl 0.0039 clip 0.03 std 0.232 | val  | 247s
+[gnn] upd   30 | R +0.3273 loss 0.29% d 17.8ms | kl 0.0002 clip 0.00 std 0.224 | val  | 373s
+[gnn] upd   40 | R +0.3398 loss 0.39% d 17.4ms | kl 0.0002 clip 0.00 std 0.223 | val  | 495s
+[gnn] upd   50 | R +0.2990 loss 0.81% d 17.8ms | kl 0.0001 clip 0.00 std 0.222 | val 0.2927 | 621s

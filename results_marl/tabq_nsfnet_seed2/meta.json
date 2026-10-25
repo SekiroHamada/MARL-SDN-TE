@@ -1,0 +1,10 @@
+{
+ "algo": "tabq",
+ "topology": "nsfnet",
+ "seed": 2,
+ "best_val_reward": 0.1918047659113421,
+ "overrides": {
+  "seed": 2,
+  "scenario": "pareto"
+ }
+}

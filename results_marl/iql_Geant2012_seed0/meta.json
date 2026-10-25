@@ -1,0 +1,10 @@
+{
+ "algo": "iql",
+ "topology": "Geant2012",
+ "seed": 0,
+ "best_val_reward": 0.299577326525523,
+ "overrides": {
+  "seed": 0,
+  "scenario": "pareto"
+ }
+}

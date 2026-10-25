@@ -1,0 +1,10 @@
+{
+ "algo": "tabq",
+ "topology": "Geant2012",
+ "seed": 2,
+ "best_val_reward": 0.2862518279492187,
+ "overrides": {
+  "seed": 2,
+  "scenario": "pareto"
+ }
+}

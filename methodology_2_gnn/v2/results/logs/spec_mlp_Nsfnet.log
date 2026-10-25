@@ -1,0 +1,22 @@
+MLP specialist on Nsfnet (13 nodes, 15 links) params 199,713
+[mlp] upd    1 | R +0.2262 loss 1.11% d 16.9ms | kl 0.0050 clip 0.06 std 0.367 | val  | 1s
+[mlp] upd   10 | R +0.1253 loss 2.24% d 18.1ms | kl 0.0062 clip 0.09 std 0.331 | val  | 13s
+[mlp] upd   20 | R +0.2961 loss 0.83% d 15.4ms | kl 0.0060 clip 0.09 std 0.308 | val  | 26s
+[mlp] upd   30 | R +0.1844 loss 1.69% d 17.0ms | kl 0.0129 clip 0.11 std 0.301 | val  | 40s
+[mlp] upd   40 | R +0.2310 loss 1.16% d 16.2ms | kl 0.0157 clip 0.13 std 0.280 | val  | 53s
+[mlp] upd   50 | R +0.2404 loss 1.38% d 16.6ms | kl 0.0104 clip 0.11 std 0.259 | val 0.2954 | 67s
+[mlp] upd   60 | R +0.2382 loss 1.55% d 16.2ms | kl 0.0098 clip 0.11 std 0.245 | val  | 81s
+[mlp] upd   70 | R +0.2516 loss 1.44% d 16.2ms | kl 0.0182 clip 0.14 std 0.234 | val  | 94s
+[mlp] upd   80 | R +0.2735 loss 0.87% d 15.7ms | kl 0.0135 clip 0.12 std 0.225 | val  | 108s
+[mlp] upd   90 | R +0.2169 loss 1.56% d 17.1ms | kl 0.0169 clip 0.15 std 0.214 | val  | 122s
+[mlp] upd  100 | R +0.2701 loss 0.78% d 15.7ms | kl 0.0122 clip 0.12 std 0.204 | val 0.2892 | 137s
+[mlp] upd  110 | R +0.1837 loss 1.64% d 17.6ms | kl 0.0117 clip 0.11 std 0.196 | val  | 150s
+[mlp] upd  120 | R +0.2138 loss 1.62% d 16.2ms | kl 0.0116 clip 0.12 std 0.193 | val  | 164s
+[mlp] upd  130 | R +0.2573 loss 1.18% d 16.8ms | kl 0.0121 clip 0.10 std 0.184 | val  | 178s
+[mlp] upd  140 | R +0.2291 loss 1.27% d 16.4ms | kl 0.0082 clip 0.09 std 0.178 | val  | 191s
+[mlp] upd  150 | R +0.2420 loss 0.98% d 15.6ms | kl 0.0077 clip 0.07 std 0.173 | val 0.2958 | 205s
+[mlp] upd  160 | R +0.1285 loss 2.19% d 18.4ms | kl 0.0067 clip 0.07 std 0.169 | val  | 218s
+[mlp] upd  170 | R +0.3140 loss 0.69% d 14.8ms | kl 0.0065 clip 0.06 std 0.166 | val  | 232s
+[mlp] upd  180 | R +0.2526 loss 1.23% d 16.2ms | kl 0.0040 clip 0.05 std 0.164 | val  | 246s
+[mlp] upd  190 | R +0.1759 loss 2.29% d 17.2ms | kl 0.0031 clip 0.03 std 0.162 | val  | 259s
+[mlp] upd  200 | R +0.2359 loss 1.76% d 16.1ms | kl 0.0002 clip 0.00 std 0.161 | val 0.3134 | 273s

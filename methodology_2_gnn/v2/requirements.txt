@@ -1,0 +1,9 @@
+# Methodology 2 v2 (tested with Python 3.13, CPU only)
+torch>=2.2
+torch_geometric>=2.5
+numpy>=1.26
+scipy>=1.11        # HiGHS LP solver for the LP-oracle baseline
+networkx>=3.2
+pandas>=2.0
+pyyaml>=6.0
+matplotlib>=3.8

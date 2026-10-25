@@ -1,0 +1,3 @@
+[worker2] 22:05:41 START rm -rf results_marl/tabq_nsfnet_seed0; python3 -W ignore methodology_1_marl/train_m1.py --algo tabq --topology nsfnet --seeds 0 > results_marl/tabq_nsfnet_seed0.log 2>&1
+[worker2] 22:07:51 OK
+[worker2] QUEUE_EMPTY
