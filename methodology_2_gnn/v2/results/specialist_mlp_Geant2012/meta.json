@@ -1,0 +1,5 @@
+{
+ "best_val_reward": 0.37695005866092074,
+ "topology": "Geant2012",
+ "model": "mlp"
+}

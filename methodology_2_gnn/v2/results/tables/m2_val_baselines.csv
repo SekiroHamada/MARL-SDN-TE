@@ -1,0 +1,5 @@
+method,reward
+OSPF,0.2904
+ECMP-hop,0.3026
+Softmin(static),0.2708
+LP-oracle(mean TM),0.3597

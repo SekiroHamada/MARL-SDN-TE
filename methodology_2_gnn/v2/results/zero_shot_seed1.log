@@ -1,0 +1,42 @@
+GNN params: 221,189 | train pool 400 synthetic graphs (mean deg 2.96)
+[gnn] upd    1 | R +0.3077 loss 0.79% d 31.2ms | kl 0.0016 clip 0.01 std 0.366 | val  | 6s
+[gnn] upd   10 | R +0.2311 loss 2.11% d 27.0ms | kl 0.0017 clip 0.01 std 0.348 | val  | 63s
+[gnn] upd   20 | R +0.2533 loss 1.46% d 29.3ms | kl 0.0026 clip 0.03 std 0.325 | val  | 130s
+[gnn] upd   30 | R +0.2704 loss 1.19% d 27.6ms | kl 0.0029 clip 0.02 std 0.320 | val  | 204s
+[gnn] upd   40 | R +0.3487 loss 0.56% d 27.3ms | kl 0.0034 clip 0.03 std 0.295 | val  | 272s
+[gnn] upd   50 | R +0.3021 loss 0.58% d 28.0ms | kl 0.0027 clip 0.03 std 0.270 | val 0.3043 | 339s
+[gnn] upd   60 | R +0.3594 loss 0.59% d 30.0ms | kl 0.0028 clip 0.03 std 0.254 | val  | 395s
+[gnn] upd   70 | R +0.2819 loss 0.68% d 27.1ms | kl 0.0052 clip 0.05 std 0.232 | val  | 458s
+[gnn] upd   80 | R +0.3209 loss 0.95% d 27.8ms | kl 0.0048 clip 0.06 std 0.217 | val  | 528s
+[gnn] upd   90 | R +0.3614 loss 0.71% d 29.6ms | kl 0.0047 clip 0.05 std 0.207 | val  | 590s
+[gnn] upd  100 | R +0.3049 loss 0.60% d 26.1ms | kl 0.0048 clip 0.05 std 0.193 | val 0.3172 | 663s
+[gnn] upd  110 | R +0.2154 loss 1.50% d 26.1ms | kl 0.0059 clip 0.06 std 0.179 | val  | 734s
+[gnn] upd  120 | R +0.3502 loss 0.55% d 27.0ms | kl 0.0054 clip 0.06 std 0.168 | val  | 801s
+[gnn] upd  130 | R +0.3409 loss 0.93% d 26.7ms | kl 0.0071 clip 0.08 std 0.156 | val  | 868s
+[gnn] upd  140 | R +0.3189 loss 1.14% d 28.1ms | kl 0.0079 clip 0.08 std 0.147 | val  | 937s
+[gnn] upd  150 | R +0.3122 loss 1.20% d 29.0ms | kl 0.0060 clip 0.06 std 0.139 | val 0.3154 | 1004s
+[gnn] upd  160 | R +0.3639 loss 0.47% d 31.4ms | kl 0.0065 clip 0.07 std 0.128 | val  | 1066s
+[gnn] upd  170 | R +0.3778 loss 0.50% d 30.8ms | kl 0.0069 clip 0.07 std 0.121 | val  | 1134s
+[gnn] upd  180 | R +0.3245 loss 1.00% d 26.2ms | kl 0.0060 clip 0.07 std 0.112 | val  | 1205s
+[gnn] upd  190 | R +0.3674 loss 0.74% d 28.6ms | kl 0.0061 clip 0.07 std 0.106 | val  | 1264s
+[gnn] upd  200 | R +0.3626 loss 0.29% d 18.6ms | kl 0.0056 clip 0.06 std 0.100 | val 0.3127 | 1333s
+[gnn] upd  210 | R +0.3029 loss 1.64% d 32.4ms | kl 0.0069 clip 0.07 std 0.096 | val  | 1397s
+[gnn] upd  220 | R +0.3414 loss 0.41% d 26.3ms | kl 0.0060 clip 0.07 std 0.093 | val  | 1463s
+[gnn] upd  230 | R +0.3335 loss 0.76% d 25.6ms | kl 0.0074 clip 0.08 std 0.090 | val  | 1532s
+[gnn] upd  240 | R +0.4094 loss 0.33% d 33.9ms | kl 0.0094 clip 0.10 std 0.087 | val  | 1596s
+[gnn] upd  250 | R +0.3309 loss 0.88% d 28.6ms | kl 0.0077 clip 0.07 std 0.084 | val 0.3069 | 1667s
+[gnn] upd  260 | R +0.3603 loss 0.60% d 33.9ms | kl 0.0066 clip 0.07 std 0.081 | val  | 1729s
+[gnn] upd  270 | R +0.3371 loss 0.91% d 30.0ms | kl 0.0082 clip 0.07 std 0.078 | val  | 1793s
+[gnn] upd  280 | R +0.2763 loss 1.74% d 27.0ms | kl 0.0071 clip 0.08 std 0.075 | val  | 1860s
+[gnn] upd  290 | R +0.3372 loss 0.61% d 26.4ms | kl 0.0072 clip 0.06 std 0.072 | val  | 1927s
+[gnn] upd  300 | R +0.2945 loss 2.13% d 25.0ms | kl 0.0059 clip 0.06 std 0.071 | val 0.3077 | 1998s
+[gnn] upd  310 | R +0.3697 loss 0.44% d 26.2ms | kl 0.0040 clip 0.04 std 0.069 | val  | 2059s
+[gnn] upd  320 | R +0.3959 loss 0.23% d 29.2ms | kl 0.0038 clip 0.04 std 0.067 | val  | 2127s
+[gnn] upd  330 | R +0.2782 loss 1.05% d 31.5ms | kl 0.0047 clip 0.05 std 0.065 | val  | 2199s
+[gnn] upd  340 | R +0.3636 loss 0.87% d 28.0ms | kl 0.0047 clip 0.04 std 0.064 | val  | 2265s
+[gnn] upd  350 | R +0.3697 loss 0.73% d 31.3ms | kl 0.0034 clip 0.03 std 0.062 | val 0.3078 | 2330s
+[gnn] upd  360 | R +0.3659 loss 0.62% d 26.7ms | kl 0.0034 clip 0.03 std 0.061 | val  | 2391s
+[gnn] upd  370 | R +0.3569 loss 0.54% d 24.8ms | kl 0.0033 clip 0.03 std 0.061 | val  | 2451s
+[gnn] upd  380 | R +0.2800 loss 1.07% d 27.9ms | kl 0.0024 clip 0.01 std 0.060 | val  | 2521s
+[gnn] upd  390 | R +0.3454 loss 0.82% d 28.1ms | kl 0.0012 clip 0.01 std 0.060 | val  | 2584s
+[gnn] upd  400 | R +0.3278 loss 0.70% d 28.2ms | kl 0.0000 clip 0.00 std 0.060 | val 0.307 | 2651s

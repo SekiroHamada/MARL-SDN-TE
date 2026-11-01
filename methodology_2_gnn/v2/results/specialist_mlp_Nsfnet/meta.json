@@ -1,0 +1,5 @@
+{
+ "best_val_reward": 0.31341665046431194,
+ "topology": "Nsfnet",
+ "model": "mlp"
+}
