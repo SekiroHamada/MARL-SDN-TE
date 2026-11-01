@@ -1,0 +1,40 @@
+# Methodology 2 (v2) — all hyper-parameters in one place
+sim:                        # documents the TESimulator defaults used by every script
+  dt_s: 0.01                # 10 ms control interval
+  softmin_gamma: 2.0
+  reward_weights: [1.0, 0.5, 2.0]   # alpha (throughput), beta (delay), gamma (loss) — team config
+train_loads: [0.5, 1.05]    # uniform; test loads 0.5/0.8/0.95 are inside, 1.1 is outside
+
+gnn:
+  hidden: 64
+  layers: 4
+  global_context: true
+
+ppo:
+  seed: 0
+  updates: 400
+  shadow_baseline: true
+  n_envs: 16
+  rollout_len: 32
+  episode_len: 32
+  gamma: 0.9
+  lam: 0.9
+  lr: 0.001
+  epochs: 4
+  minibatch: 64
+  clip: 0.2
+  vf_coef: 0.5
+  ent_coef: 0.0
+  max_grad_norm: 0.5
+  eval_every: 25
+  eval_steps: 64
+
+data:
+  synthetic_pool: 400
+  synthetic_val: 24
+  node_range: [8, 45]
+
+eval:
+  loads: [0.5, 0.8, 0.95, 1.1]
+  seeds: [101, 102, 103, 104, 105]
+  steps: 200

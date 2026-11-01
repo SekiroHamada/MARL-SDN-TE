@@ -1,0 +1,22 @@
+GNN specialist on Geant2012 (40 nodes, 61 links) params 221,189
+[gnn] upd    1 | R +0.3164 loss 0.42% d 17.5ms | kl 0.0015 clip 0.01 std 0.368 | val  | 13s
+[gnn] upd   10 | R +0.2688 loss 0.65% d 18.8ms | kl 0.0005 clip 0.00 std 0.352 | val  | 124s
+[gnn] upd   20 | R +0.3306 loss 0.38% d 17.5ms | kl 0.0015 clip 0.01 std 0.327 | val  | 251s
+[gnn] upd   30 | R +0.3371 loss 0.09% d 17.7ms | kl 0.0023 clip 0.02 std 0.306 | val  | 382s
+[gnn] upd   40 | R +0.3617 loss 0.12% d 17.1ms | kl 0.0019 clip 0.02 std 0.278 | val  | 511s
+[gnn] upd   50 | R +0.3193 loss 0.55% d 17.5ms | kl 0.0020 clip 0.02 std 0.256 | val 0.3832 | 644s
+[gnn] upd   60 | R +0.3577 loss 0.27% d 16.7ms | kl 0.0023 clip 0.02 std 0.240 | val  | 773s
+[gnn] upd   70 | R +0.3653 loss 0.16% d 16.2ms | kl 0.0021 clip 0.01 std 0.223 | val  | 902s
+[gnn] upd   80 | R +0.3716 loss 0.27% d 16.4ms | kl 0.0019 clip 0.02 std 0.205 | val  | 1037s
+[gnn] upd   90 | R +0.3761 loss 0.09% d 16.8ms | kl 0.0025 clip 0.02 std 0.189 | val  | 1165s
+[gnn] upd  100 | R +0.3428 loss 0.30% d 16.5ms | kl 0.0024 clip 0.02 std 0.180 | val 0.3854 | 1297s
+[gnn] upd  110 | R +0.3475 loss 0.30% d 16.7ms | kl 0.0026 clip 0.02 std 0.172 | val  | 1427s
+[gnn] upd  120 | R +0.3601 loss 0.18% d 16.5ms | kl 0.0024 clip 0.03 std 0.164 | val  | 1557s
+[gnn] upd  130 | R +0.3628 loss 0.33% d 16.7ms | kl 0.0025 clip 0.02 std 0.156 | val  | 1690s
+[gnn] upd  140 | R +0.3820 loss 0.19% d 16.5ms | kl 0.0025 clip 0.02 std 0.149 | val  | 1819s
+[gnn] upd  150 | R +0.3690 loss 0.15% d 16.2ms | kl 0.0026 clip 0.02 std 0.143 | val 0.3823 | 1952s
+[gnn] upd  160 | R +0.3356 loss 0.55% d 16.4ms | kl 0.0016 clip 0.01 std 0.139 | val  | 2079s
+[gnn] upd  170 | R +0.3809 loss 0.13% d 15.8ms | kl 0.0013 clip 0.01 std 0.138 | val  | 2207s
+[gnn] upd  180 | R +0.3835 loss 0.15% d 16.1ms | kl 0.0010 clip 0.01 std 0.136 | val  | 2341s
+[gnn] upd  190 | R +0.3664 loss 0.27% d 17.0ms | kl 0.0013 clip 0.01 std 0.134 | val  | 2472s
+[gnn] upd  200 | R +0.3685 loss 0.51% d 16.3ms | kl 0.0000 clip 0.00 std 0.134 | val 0.3845 | 2604s

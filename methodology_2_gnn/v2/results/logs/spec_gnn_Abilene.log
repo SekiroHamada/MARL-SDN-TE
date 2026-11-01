@@ -1,0 +1,15 @@
+GNN specialist on Abilene (11 nodes, 14 links) params 221,189
+[gnn] upd    1 | R +0.1737 loss 1.89% d 18.4ms | kl 0.0011 clip 0.01 std 0.367 | val  | 3s
+[gnn] upd   10 | R +0.1423 loss 2.04% d 18.4ms | kl 0.0031 clip 0.04 std 0.334 | val  | 30s
+[gnn] upd   20 | R +0.3155 loss 0.46% d 14.9ms | kl 0.0042 clip 0.04 std 0.304 | val  | 59s
+[gnn] upd   30 | R +0.1865 loss 1.33% d 18.0ms | kl 0.0066 clip 0.05 std 0.287 | val  | 90s
+[gnn] upd   40 | R +0.3252 loss 0.33% d 14.8ms | kl 0.0053 clip 0.06 std 0.266 | val  | 118s
+[gnn] upd   50 | R +0.3428 loss 0.41% d 14.8ms | kl 0.0048 clip 0.05 std 0.239 | val 0.2747 | 148s
+[gnn] upd   60 | R +0.3244 loss 0.55% d 14.7ms | kl 0.0042 clip 0.04 std 0.224 | val  | 177s
+[gnn] upd   70 | R +0.3033 loss 0.29% d 15.7ms | kl 0.0057 clip 0.06 std 0.214 | val  | 206s
+[gnn] upd   80 | R +0.2939 loss 0.56% d 15.8ms | kl 0.0092 clip 0.09 std 0.201 | val  | 237s
+[gnn] upd   90 | R +0.3087 loss 0.58% d 15.9ms | kl 0.0082 clip 0.07 std 0.191 | val  | 266s
+[gnn] upd  100 | R +0.1901 loss 1.60% d 17.6ms | kl 0.0091 clip 0.08 std 0.179 | val 0.264 | 297s
+[gnn] upd  110 | R +0.2311 loss 1.18% d 17.4ms | kl 0.0078 clip 0.08 std 0.171 | val  | 327s
+[gnn] upd  120 | R +0.2990 loss 0.30% d 15.1ms | kl 0.0065 clip 0.07 std 0.164 | val  | 356s
+[gnn] upd  130 | R +0.3184 loss 0.50% d 16.0ms | kl 0.0097 clip 0.07 std 0.159 | val  | 387s
