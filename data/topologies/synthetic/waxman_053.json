@@ -1,0 +1,282 @@
+{
+    "directed": false,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "pos": [
+                0.8221874708411535,
+                0.7897334628544601
+            ],
+            "id": 0
+        },
+        {
+            "pos": [
+                0.3259143801858084,
+                0.4953792890529074
+            ],
+            "id": 1
+        },
+        {
+            "pos": [
+                0.212829662247646,
+                0.7520647872470546
+            ],
+            "id": 2
+        },
+        {
+            "pos": [
+                0.25896448353599777,
+                0.023637149425505655
+            ],
+            "id": 3
+        },
+        {
+            "pos": [
+                0.6477049534184627,
+                0.10643922871785738
+            ],
+            "id": 4
+        },
+        {
+            "pos": [
+                0.9954695725231577,
+                0.7409595885109591
+            ],
+            "id": 5
+        },
+        {
+            "pos": [
+                0.10127032493047328,
+                0.7469010583878345
+            ],
+            "id": 6
+        },
+        {
+            "pos": [
+                0.11574653572768401,
+                0.8697810798472163
+            ],
+            "id": 7
+        },
+        {
+            "pos": [
+                0.5337178904490917,
+                0.17153733283882666
+            ],
+            "id": 8
+        },
+        {
+            "pos": [
+                0.969231773455866,
+                0.5766376790139447
+            ],
+            "id": 9
+        },
+        {
+            "pos": [
+                0.16673417413285818,
+                0.9333222501121614
+            ],
+            "id": 10
+        },
+        {
+            "pos": [
+                0.9978838184810502,
+                0.7570612958673788
+            ],
+            "id": 11
+        }
+    ],
+    "edges": [
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 0,
+            "target": 1
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 0,
+            "target": 2
+        },
+        {
+            "capacity": 100,
+            "delay": 4,
+            "queue": 100,
+            "source": 0,
+            "target": 3
+        },
+        {
+            "capacity": 100,
+            "delay": 7,
+            "queue": 100,
+            "source": 0,
+            "target": 4
+        },
+        {
+            "capacity": 100,
+            "delay": 7,
+            "queue": 100,
+            "source": 0,
+            "target": 5
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 0,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 0,
+            "target": 10
+        },
+        {
+            "capacity": 100,
+            "delay": 4,
+            "queue": 100,
+            "source": 1,
+            "target": 2
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 1,
+            "target": 3
+        },
+        {
+            "capacity": 100,
+            "delay": 7,
+            "queue": 100,
+            "source": 1,
+            "target": 7
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 2,
+            "target": 3
+        },
+        {
+            "capacity": 100,
+            "delay": 3,
+            "queue": 100,
+            "source": 2,
+            "target": 6
+        },
+        {
+            "capacity": 100,
+            "delay": 4,
+            "queue": 100,
+            "source": 2,
+            "target": 7
+        },
+        {
+            "capacity": 100,
+            "delay": 7,
+            "queue": 100,
+            "source": 2,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 3,
+            "queue": 100,
+            "source": 3,
+            "target": 4
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 3,
+            "target": 8
+        },
+        {
+            "capacity": 100,
+            "delay": 3,
+            "queue": 100,
+            "source": 3,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 4,
+            "target": 8
+        },
+        {
+            "capacity": 100,
+            "delay": 5,
+            "queue": 100,
+            "source": 4,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 10,
+            "queue": 100,
+            "source": 5,
+            "target": 6
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 5,
+            "target": 9
+        },
+        {
+            "capacity": 100,
+            "delay": 9,
+            "queue": 100,
+            "source": 5,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 3,
+            "queue": 100,
+            "source": 6,
+            "target": 7
+        },
+        {
+            "capacity": 100,
+            "delay": 2,
+            "queue": 100,
+            "source": 6,
+            "target": 10
+        },
+        {
+            "capacity": 100,
+            "delay": 6,
+            "queue": 100,
+            "source": 7,
+            "target": 10
+        },
+        {
+            "capacity": 100,
+            "delay": 4,
+            "queue": 100,
+            "source": 7,
+            "target": 11
+        },
+        {
+            "capacity": 100,
+            "delay": 8,
+            "queue": 100,
+            "source": 9,
+            "target": 11
+        }
+    ]
+}

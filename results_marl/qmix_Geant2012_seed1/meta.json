@@ -1,0 +1,10 @@
+{
+ "algo": "qmix",
+ "topology": "Geant2012",
+ "seed": 1,
+ "best_val_reward": 0.2649186552984778,
+ "overrides": {
+  "seed": 1,
+  "scenario": "pareto"
+ }
+}

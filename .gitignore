@@ -1,8 +1,11 @@
 __pycache__/
 *.pyc
 .venv/
-marl-sdn/
+venv/
 .idea/
 .vscode/
-*.png
-*.csv
+.DS_Store
+*.lock
+results_marl/jobs*.txt
+results_marl/core_pids
+/week1_baseline_metrics.csv

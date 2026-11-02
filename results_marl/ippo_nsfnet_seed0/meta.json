@@ -1,0 +1,9 @@
+{
+ "algo": "ippo",
+ "topology": "nsfnet",
+ "seed": 0,
+ "best_val_reward": 0.3241217594733922,
+ "overrides": {
+  "seed": 0
+ }
+}

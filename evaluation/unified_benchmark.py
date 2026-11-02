@@ -5,11 +5,12 @@ Every method runs on the same simulator, topology, load, traffic scenario and
 traffic seed (common random numbers), so differences are due to routing only.
 
   Baselines : OSPF, ECMP, ECMP-hop, LP-oracle (mean TM)
-  M1        : IPPO (independent learners)                 results_marl/ippo_*
+  M1        : IPPO, IQL-DQN, Tabular-Q (independent)       results_marl/{ippo,iql,tabq}_*
   M2        : GNN zero-shot / GNN specialist / MLP specialist  methodology_2_gnn/v2/results
-  M3        : MAPPO, MADDPG (CTDE)                         results_marl/{mappo,maddpg}_*
+  M3        : MAPPO, MADDPG, QMIX (CTDE)                   results_marl/{mappo,maddpg,qmix}_*
 
     python evaluation/unified_benchmark.py            # writes results_unified/*.csv
+    python evaluation/unified_benchmark.py --merge    # re-aggregate existing per-seed CSVs
 """
 import os as _os
 for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
@@ -181,7 +182,7 @@ def training_cost():
     for f in glob.glob(os.path.join(MARL, "*", "*_training_curve.csv")):
         d = pd.read_csv(f); r = conv(d, "env_steps", "val_reward", "wall_clock_s")
         run_ = os.path.basename(os.path.dirname(f))
-        if r: rows.append(dict(run=run_, family="M1" if run_.startswith("ippo") else "M3", **r))
+        if r: rows.append(dict(run=run_, family=FAMILY.get(run_.split("_")[0], "M3"), **r))
     return pd.DataFrame(rows)
 
 
@@ -212,6 +213,19 @@ def main(topologies=TOPOLOGIES, tag=""):
     aggregate(pd.DataFrame(out))
 
 
+def by_algorithm(agg):
+    """Average the per-checkpoint rows of unified_summary over training seeds,
+    e.g. 'M1 IPPO (seed0..2)' -> 'M1 IPPO'. Baselines and specialists pass through."""
+    a = agg.copy()
+    a["algo"] = a["method"].str.replace(r" \(seed\d+\)$", "", regex=True)
+    g = a.groupby(["topology", "scenario", "load", "family", "algo"])
+    out = g.agg(reward=("reward", "mean"), reward_seed_sd=("reward", "std"), n_seeds=("reward", "size"),
+                loss_pct=("loss_pct", "mean"), delay_ms=("delay_ms", "mean"), mlu=("mlu", "mean"),
+                jain=("jain", "mean"), throughput_mbps=("throughput_mbps", "mean"),
+                inference_ms=("inference_ms", "mean"), signalling_bytes=("signalling_bytes", "first"))
+    return out.reset_index()
+
+
 def aggregate(df):
     df["loss_pct"] = 100 * df.loss_ratio
     agg = df.groupby(["topology", "scenario", "load", "family", "method"]).agg(
@@ -221,6 +235,7 @@ def aggregate(df):
         inference_ms=("inference_ms_per_decision", "first"),
         signalling_bytes=("signalling_bytes_per_interval", "first")).reset_index()
     agg.round(5).to_csv(os.path.join(OUT, "unified_summary.csv"), index=False)
+    by_algorithm(agg).round(5).to_csv(os.path.join(OUT, "unified_by_algorithm.csv"), index=False)
     training_cost().round(3).to_csv(os.path.join(OUT, "training_cost.csv"), index=False)
     print(agg.to_string())
 

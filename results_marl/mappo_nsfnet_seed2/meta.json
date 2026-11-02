@@ -1,0 +1,9 @@
+{
+ "algo": "mappo",
+ "topology": "nsfnet",
+ "seed": 2,
+ "best_val_reward": 0.322224191825494,
+ "overrides": {
+  "seed": 2
+ }
+}
