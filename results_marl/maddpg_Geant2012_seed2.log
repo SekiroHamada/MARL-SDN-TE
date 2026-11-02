@@ -1,0 +1,11 @@
+[maddpg] it 500 R +0.3224 qloss 0.0130 noise 0.28 val 0.25416666783033 42s
+[maddpg] it 1000 R +0.3124 qloss 0.0106 noise 0.25 val 0.25416666783033 85s
+[maddpg] it 1500 R +0.3016 qloss 0.0338 noise 0.23 val 0.21311659883553813 132s
+[maddpg] it 2000 R +0.2753 qloss 0.0615 noise 0.20 val 0.24322246693871388 179s
+[maddpg] it 2500 R +0.2297 qloss 0.0671 noise 0.18 val 0.10049606871403138 227s
+[maddpg] it 3000 R +0.2495 qloss 0.0703 noise 0.15 val 0.13776964008025624 274s
+[maddpg] it 3500 R +0.2884 qloss 0.0735 noise 0.13 val 0.18567498165082605 321s
+[maddpg] it 4000 R +0.2760 qloss 0.0885 noise 0.10 val 0.21328146895412659 367s
+[maddpg] it 4500 R +0.2354 qloss 0.0820 noise 0.08 val 0.04347678639479143 414s
+[maddpg] it 5000 R +0.1521 qloss 0.0771 noise 0.05 val -0.1548349297783476 461s
+seed 2: best validation reward 0.2542

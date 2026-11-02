@@ -1,0 +1,10 @@
+{
+ "algo": "maddpg",
+ "topology": "Geant2012",
+ "seed": 2,
+ "best_val_reward": 0.25416666783033,
+ "overrides": {
+  "seed": 2,
+  "scenario": "pareto"
+ }
+}

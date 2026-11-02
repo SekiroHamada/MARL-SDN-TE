@@ -1,0 +1,12 @@
+# Core (CPU only is enough). Tested with Python 3.13.
+torch>=2.2
+torch_geometric>=2.5
+numpy>=1.26
+scipy>=1.11        # HiGHS LP solver for the LP-oracle baseline
+networkx>=3.2
+pandas>=2.0
+pyyaml>=6.0
+matplotlib>=3.8
+gymnasium>=0.29    # environments/gym_env.py, scripts/demo_gym.py
+# Mininet validation (mininet_validation/) also needs Mininet + Open vSwitch,
+# installed system-wide on Linux and run with `sudo python3`.

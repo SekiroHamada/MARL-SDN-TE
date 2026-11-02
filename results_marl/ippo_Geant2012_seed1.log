@@ -1,0 +1,27 @@
+[ippo] upd    1 R +0.3214 EV +0.00 kl 0.0049 clip 0.05 val  4s
+[ippo] upd   10 R +0.2760 EV +0.09 kl 0.0060 clip 0.08 val  36s
+[ippo] upd   20 R +0.3368 EV +0.11 kl 0.0053 clip 0.06 val  73s
+[ippo] upd   30 R +0.3451 EV +0.05 kl 0.0043 clip 0.06 val  111s
+[ippo] upd   40 R +0.3055 EV +0.15 kl 0.0048 clip 0.07 val  148s
+[ippo] upd   50 R +0.2566 EV +0.12 kl 0.0045 clip 0.06 val 0.328706890485877 185s
+[ippo] upd   60 R +0.3630 EV +0.19 kl 0.0042 clip 0.05 val  222s
+[ippo] upd   70 R +0.3046 EV +0.10 kl 0.0043 clip 0.06 val  258s
+[ippo] upd   80 R +0.3233 EV +0.10 kl 0.0055 clip 0.06 val  296s
+[ippo] upd   90 R +0.3782 EV +0.18 kl 0.0048 clip 0.06 val  332s
+[ippo] upd  100 R +0.3180 EV +0.22 kl 0.0059 clip 0.06 val 0.33812899411017333 370s
+[ippo] upd  110 R +0.3570 EV +0.17 kl 0.0052 clip 0.06 val  407s
+[ippo] upd  120 R +0.3273 EV +0.15 kl 0.0051 clip 0.07 val  443s
+[ippo] upd  130 R +0.3808 EV +0.19 kl 0.0045 clip 0.05 val  481s
+[ippo] upd  140 R +0.3741 EV +0.19 kl 0.0036 clip 0.04 val  517s
+[ippo] upd  150 R +0.3534 EV +0.20 kl 0.0035 clip 0.05 val 0.3465857600023359 555s
+[ippo] upd  160 R +0.3565 EV +0.21 kl 0.0035 clip 0.04 val  592s
+[ippo] upd  170 R +0.3377 EV +0.17 kl 0.0035 clip 0.04 val  628s
+[ippo] upd  180 R +0.3580 EV +0.05 kl 0.0043 clip 0.04 val  666s
+[ippo] upd  190 R +0.3301 EV +0.14 kl 0.0028 clip 0.03 val  702s
+[ippo] upd  200 R +0.3264 EV +0.21 kl 0.0029 clip 0.04 val 0.33260829426816124 740s
+[ippo] upd  210 R +0.2911 EV +0.14 kl 0.0024 clip 0.03 val  776s
+[ippo] upd  220 R +0.3001 EV +0.23 kl 0.0014 clip 0.01 val  813s
+[ippo] upd  230 R +0.3378 EV +0.19 kl 0.0008 clip 0.01 val  851s
+[ippo] upd  240 R +0.3470 EV +0.25 kl 0.0005 clip 0.00 val  887s
+[ippo] upd  250 R +0.3914 EV +0.26 kl -0.0000 clip 0.00 val 0.33229288878205854 924s
+seed 1: best validation reward 0.3466

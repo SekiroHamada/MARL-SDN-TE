@@ -1,0 +1,9 @@
+{
+ "algo": "maddpg",
+ "topology": "nsfnet",
+ "seed": 2,
+ "best_val_reward": 0.2289031741617329,
+ "overrides": {
+  "seed": 2
+ }
+}
