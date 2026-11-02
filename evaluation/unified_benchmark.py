@@ -80,7 +80,7 @@ def methods_for(topo, G):
     env = FlowSplittingEnv(G)
     ms = [BaselineAgent(b) for b in ["OSPF", "ECMP", "ECMP-hop", "LP-oracle(mean TM)"]]
     cfg = yaml.safe_load(open(os.path.join(ROOT, "methodology_2_gnn", "v2", "config_v2.yaml")))
-    for p in sorted(glob.glob(os.path.join(M2, "zero_shot_seed*", "gnn_best.pt"))):
+    for p in sorted(glob.glob(os.path.join(M2, "zero_shot_seed[0-9]", "gnn_best.pt"))):
         m = GNNPolicy(**cfg["gnn"]); m.load_state_dict(torch.load(p))
         s = os.path.basename(os.path.dirname(p)).replace("zero_shot_", "")
         ms.append(GraphAgent(f"M2 GNN zero-shot ({s})", m, "M2"))
@@ -119,7 +119,7 @@ def load_switch_agents(G, topo, algos):
     env = FlowSplittingEnv(G)
     out = []
     for algo in algos:
-        for d in sorted(glob.glob(os.path.join(MARL, f"{algo}_{topo}_seed*"))):
+        for d in sorted(glob.glob(os.path.join(MARL, f"{algo}_{topo}_seed[0-9]"))):
             seed = os.path.basename(d).split("_")[-1]
             name = f"{FAMILY[algo]} {LABEL[algo]} ({seed})"
             meta = os.path.join(d, "meta.json")

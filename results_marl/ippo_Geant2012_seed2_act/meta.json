@@ -1,0 +1,21 @@
+{
+ "algo": "ippo",
+ "topology": "Geant2012",
+ "seed": 2,
+ "best_val_reward": 0.33926098088690754,
+ "overrides": {
+  "seed": 2,
+  "scenario": "pareto",
+  "updates": 30,
+  "hold": 25,
+  "churn_penalty": 0.1,
+  "lr_actor": 0.0003,
+  "lr_critic": 0.0003,
+  "n_envs": 8,
+  "eval_every": 10,
+  "eval_steps": 8,
+  "rollout_len": 16,
+  "episode_len": 16,
+  "init_actor": "results_marl/ippo_Geant2012_seed2/ippo_actor_best.pt"
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "algo": "mappo",
+ "topology": "Geant2012",
+ "seed": 1,
+ "best_val_reward": 0.3344257615102436,
+ "overrides": {
+  "seed": 1,
+  "scenario": "pareto",
+  "updates": 30,
+  "hold": 25,
+  "churn_penalty": 0.1,
+  "lr_actor": 0.0003,
+  "lr_critic": 0.0003,
+  "n_envs": 8,
+  "eval_every": 10,
+  "eval_steps": 8,
+  "rollout_len": 16,
+  "episode_len": 16,
+  "init_actor": "results_marl/mappo_Geant2012_seed1/mappo_actor_best.pt"
+ }
+}

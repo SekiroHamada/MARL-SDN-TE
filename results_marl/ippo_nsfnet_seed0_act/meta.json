@@ -1,0 +1,21 @@
+{
+ "algo": "ippo",
+ "topology": "nsfnet",
+ "seed": 0,
+ "best_val_reward": 0.2955052498252663,
+ "overrides": {
+  "seed": 0,
+  "scenario": "pareto",
+  "updates": 30,
+  "hold": 25,
+  "churn_penalty": 0.1,
+  "lr_actor": 0.0003,
+  "lr_critic": 0.0003,
+  "n_envs": 8,
+  "eval_every": 10,
+  "eval_steps": 8,
+  "rollout_len": 16,
+  "episode_len": 16,
+  "init_actor": "results_marl/ippo_nsfnet_seed0/ippo_actor_best.pt"
+ }
+}

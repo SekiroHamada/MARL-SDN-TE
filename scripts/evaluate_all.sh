@@ -16,4 +16,9 @@ python3 -W ignore evaluation/unified_benchmark.py --topologies Geant2012 --tag _
 wait
 python3 -W ignore evaluation/unified_benchmark.py --merge > /dev/null
 python3 -W ignore evaluation/benchmark_evaluator.py
+# actuation realism (per-step LP, control interval, hysteresis, churn-aware fine-tunes from scripts/train_actuation.sh)
+python3 -W ignore evaluation/actuation_study.py --part lp
+python3 -W ignore evaluation/actuation_study.py --part interval
+python3 -W ignore evaluation/actuation_study.py --part deadband
+python3 -W ignore evaluation/actuation_finetune.py
 echo "ALL EVALUATIONS DONE - see results_marl/tables, methodology_2_gnn/v2/results/tables, results_unified/"

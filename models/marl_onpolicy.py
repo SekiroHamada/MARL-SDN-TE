@@ -19,7 +19,11 @@ from models.decentralized_forwarder import DecentralizedForwarder
 DEFAULTS = dict(updates=250, n_envs=16, rollout_len=32, episode_len=32, gamma=0.9, lam=0.9,
                 lr_actor=1e-3, lr_critic=1e-3, epochs=4, minibatch=128, clip=0.2,
                 max_grad_norm=0.5, hidden=64, critic_hidden=256, load_range=(0.5, 1.05),
-                eval_every=25, eval_steps=64, scenario="pareto", seed=0)
+                eval_every=25, eval_steps=64, scenario="pareto", seed=0,
+                hold=1, churn_penalty=0.0, init_actor=None)
+# hold / churn_penalty: actuation-aware training (decision held for `hold` x 10 ms,
+# reward minus churn_penalty x share of forwarding groups re-installed).
+# init_actor: fine-tune from an existing actor checkpoint.
 
 
 def set_seed(s):
@@ -29,7 +33,8 @@ def set_seed(s):
 class Slots:
     def __init__(self, G, cfg, rng):
         self.G, self.cfg, self.rng = G, cfg, rng
-        self.envs = [FlowSplittingEnv(G, seed=i, scenario=cfg["scenario"], shadow_baseline=True)
+        self.envs = [FlowSplittingEnv(G, seed=i, scenario=cfg["scenario"], shadow_baseline=True,
+                                      hold=cfg["hold"], churn_penalty=cfg["churn_penalty"])
                      for i in range(cfg["n_envs"])]
         self.t = np.zeros(cfg["n_envs"], int)
         for e in self.envs:
@@ -50,17 +55,21 @@ def build(G, cfg, make_critic):
     return env, actor, make_critic(env, cfg)
 
 
-def evaluate(actor, G, cases, steps, scenario="pareto"):
+def evaluate(actor, G, cases, steps, scenario="pareto", hold=1, churn_penalty=0.0):
+    """Mean metrics; 'objective' = reward - churn_penalty x churn (= reward when 0)."""
     infos = []
     for load, seed in cases:
-        env = FlowSplittingEnv(G, load=load, seed=seed, scenario=scenario)
+        env = FlowSplittingEnv(G, load=load, seed=seed, scenario=scenario, hold=hold,
+                               churn_penalty=churn_penalty)
         for _ in range(steps):
             X, _ = env.observe_all()
             with torch.no_grad():
                 A = actor(torch.from_numpy(X)[None])[0].numpy()
             _, _, info = env.step_matrix(A)
             infos.append(info)
-    return {k: float(np.mean([i[k] for i in infos])) for k in infos[0]}
+    out = {k: float(np.mean([i[k] for i in infos])) for k in infos[0]}
+    out["objective"] = out["reward"] - churn_penalty * out.get("churn_frac", 0.0)
+    return out
 
 
 def train(G, make_critic, out_dir, tag, **over):
@@ -69,6 +78,8 @@ def train(G, make_critic, out_dir, tag, **over):
     set_seed(cfg["seed"]); torch.set_num_threads(1)
     rng = np.random.default_rng(cfg["seed"])
     env0, actor, crit = build(G, cfg, make_critic)
+    if cfg["init_actor"]:
+        actor.load_state_dict(torch.load(cfg["init_actor"]))
     mask = torch.from_numpy(env0.slot_mask.astype(np.float32))            # (n, D)
     opt_a = torch.optim.Adam(actor.parameters(), lr=cfg["lr_actor"])
     opt_c = torch.optim.Adam(crit.parameters(), lr=cfg["lr_critic"])
@@ -139,11 +150,12 @@ def train(G, make_critic, out_dir, tag, **over):
         st = np.mean(stats, 0)
         vr = ""
         if u % cfg["eval_every"] == 0 or u == cfg["updates"]:
-            vr = evaluate(actor, G, val_cases, cfg["eval_steps"], cfg["scenario"])["reward"]
+            vr = evaluate(actor, G, val_cases, cfg["eval_steps"], cfg["scenario"],
+                          cfg["hold"], cfg["churn_penalty"])["objective"]
             if vr > best:
                 best = vr; torch.save(actor.state_dict(), os.path.join(out_dir, f"{tag}_actor_best.pt"))
         tr = np.mean([i["reward_raw"] for i in INF])
-        w.writerow([u, u * T * K, round(time.time() - t0, 1), tr, np.mean([i["loss_ratio"] for i in INF]),
+        w.writerow([u, u * T * K * cfg["hold"], round(time.time() - t0, 1), tr, np.mean([i["loss_ratio"] for i in INF]),
                     np.mean([i["avg_delay_ms"] for i in INF]), st[0], st[1], ev, st[2], st[3], vr]); f.flush()
         if u % 10 == 0 or u == 1:
             print(f"[{tag}] upd {u:4d} R {tr:+.4f} EV {ev:+.2f} kl {st[2]:.4f} clip {st[3]:.2f} val {vr} "

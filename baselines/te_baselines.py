@@ -9,18 +9,23 @@ softmin   : delay-based softmin splitting with a = 0 (the GNN's starting point).
 lp_mean   : min-MLU multi-commodity flow solved by LP on the *mean* traffic
             matrix (knows the average demand, not the bursts). Reference only:
             it needs global traffic knowledge and a central solver.
+lp_reactive    : the same LP re-solved EVERY step on the previous interval's
+            measured matrix (a deployable, telemetry-driven re-optimiser).
+lp_clairvoyant : the same LP re-solved every step on the matrix about to be
+            routed (knows the burst in advance; an upper bound, not deployable).
 """
 import numpy as np
 from scipy.optimize import linprog
 from scipy.sparse import coo_matrix
 
 
-def lp_routing(sim, delay_eps=1e-3):
-    """Destination-based min-MLU routing on sim's mean matrix -> split tensor P."""
+def lp_routing(sim, delay_eps=1e-3, demand=None):
+    """Destination-based min-MLU routing -> split tensor P. `demand` (Mbps, n x n)
+    defaults to the traffic process's mean matrix."""
     n, E = sim.n, sim.E
     alive = np.nonzero(sim.alive)[0]
     Ea = len(alive)
-    D = sim.traffic.mean_matrix * 1e6                     # bits/s
+    D = (sim.traffic.mean_matrix if demand is None else demand) * 1e6   # bits/s
     nv = n * Ea + 1                                       # f[t, e] ..., U
     U = n * Ea
     rows, cols, vals, b = [], [], [], []
@@ -77,6 +82,12 @@ class Baseline:
         self._P, self._key = None, None
 
     def act(self, sim, obs=None):
+        if self.name == "LP-reactive(last TM)":          # re-solved every step
+            last = getattr(sim, "last", None)
+            d = last["demand"] if last and "demand" in last and last["demand"] is not None else None
+            return dict(P=lp_routing(sim, demand=d)[0])
+        if self.name == "LP-clairvoyant(current TM)":
+            return dict(P=lp_routing(sim, demand=sim.demand)[0])
         key = sim.alive.tobytes()
         if self._P is None or key != self._key:          # recompute after failures
             self._P = self._routing(sim)
@@ -98,3 +109,4 @@ class Baseline:
 
 
 BASELINES = ["OSPF", "ECMP", "ECMP-hop", "Softmin(static)", "LP-oracle(mean TM)"]
+PER_STEP_LP = ["LP-reactive(last TM)", "LP-clairvoyant(current TM)"]

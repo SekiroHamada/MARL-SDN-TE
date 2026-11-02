@@ -20,16 +20,23 @@ import numpy as np
 try:
     from environments.te_sim import TESimulator
     from environments.bursty_traffic_gen import SCENARIOS
+    from environments.actuation import churn_fraction
 except ImportError:
     from te_sim import TESimulator
     from bursty_traffic_gen import SCENARIOS
+    from actuation import churn_fraction
 
 NODE_F, EDGE_F = 5, 6
 
 
 class FlowSplittingEnv:
-    def __init__(self, graph, load=0.8, seed=0, scenario="pareto", shadow_baseline=False):
+    def __init__(self, graph, load=0.8, seed=0, scenario="pareto", shadow_baseline=False,
+                 hold=1, churn_penalty=0.0):
+        """hold: simulator steps (x 10 ms) each decision stays installed.
+        churn_penalty: reward cost per unit share of forwarding groups re-installed
+        at a decision (actuation-aware training; 0 = original behaviour)."""
         self.G, self.scenario = graph, scenario
+        self.hold, self.churn_penalty, self._P_prev = int(hold), float(churn_penalty), None
         self.sim = TESimulator(graph, load=load, seed=seed, traffic_kwargs=dict(SCENARIOS[scenario]))
         self.n, self.E = self.sim.n, self.sim.E
         self.agents = [f"switch_{v}" for v in range(self.n)]
@@ -58,6 +65,7 @@ class FlowSplittingEnv:
             self.sim.load = load
         self.sim.reset(seed)
         self._make_shadow(self.sim.load, self.sim.seed)
+        self._P_prev = None
         return self._obs_dict()
 
     def step(self, actions):
@@ -69,11 +77,30 @@ class FlowSplittingEnv:
     # --------------------------------------------------------- vectorised
     def step_matrix(self, A):
         cost = self.cost_from_matrix(A)
+        if self.hold > 1 or self.churn_penalty > 0:
+            return self._step_held(cost)
         _, r, info = self.sim.step(cost, "softmin")
         info["reward_raw"] = r
         if self.shadow is not None:
             _, r_sh, _ = self.shadow.step(P=self.P_sp)
             r = r - r_sh                      # counterfactual OSPF baseline (unbiased)
+        return self.obs_matrix(), r, info
+
+    def _step_held(self, cost):
+        """One decision: install the split for `hold` steps, then pay for churn."""
+        P = self.sim.routing_matrix(cost, "softmin")
+        churn = churn_fraction(self._P_prev, P) if self._P_prev is not None else 0.0
+        self._P_prev = P
+        infos, r_raw, r_sh = [], [], []
+        for _ in range(self.hold):
+            _, r, info = self.sim.step(P=P)
+            infos.append(info); r_raw.append(r)
+            if self.shadow is not None:
+                r_sh.append(self.shadow.step(P=self.P_sp)[1])
+        info = {k: float(np.mean([i[k] for i in infos])) for k in infos[0]}
+        info["reward_raw"] = info["reward"]
+        info["churn_frac"] = churn
+        r = info["reward"] - (float(np.mean(r_sh)) if r_sh else 0.0) - self.churn_penalty * churn
         return self.obs_matrix(), r, info
 
     def observe_all(self):

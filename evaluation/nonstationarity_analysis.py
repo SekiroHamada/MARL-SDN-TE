@@ -39,7 +39,7 @@ def main(topo):
     os.makedirs(OUT, exist_ok=True)
     rows, curves = [], {}
     for algo in PAIRS["policy_gradient"] + PAIRS["value_based"]:
-        runs = sorted(glob.glob(os.path.join(MARL, f"{algo}_{topo}_seed*", f"{algo}_training_curve.csv")))
+        runs = sorted(glob.glob(os.path.join(MARL, f"{algo}_{topo}_seed[0-9]", f"{algo}_training_curve.csv")))
         vals = []
         for f in runs:
             d = pd.read_csv(f)

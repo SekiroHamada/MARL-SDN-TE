@@ -1,0 +1,5 @@
+[mappo] upd    1 R +0.1953 EV +0.05 kl 0.0042 clip 0.05 val  8s
+[mappo] upd   10 R +0.3463 EV +0.28 kl 0.0001 clip 0.00 val 0.2701529687537244 80s
+[mappo] upd   20 R +0.2914 EV +0.15 kl -0.0005 clip 0.00 val 0.26847001453960123 161s
+[mappo] upd   30 R +0.1976 EV +0.46 kl 0.0000 clip 0.00 val 0.27125529783352803 247s
+seed 0: best validation reward 0.2713

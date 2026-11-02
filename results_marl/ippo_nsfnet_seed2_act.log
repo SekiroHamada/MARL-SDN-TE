@@ -1,0 +1,5 @@
+[ippo] upd    1 R +0.3208 EV +0.01 kl 0.0044 clip 0.04 val  7s
+[ippo] upd   10 R +0.2868 EV -0.01 kl 0.0014 clip 0.00 val 0.26134229078894594 84s
+[ippo] upd   20 R +0.3278 EV +0.07 kl 0.0001 clip 0.00 val 0.26717224912388443 174s
+[ippo] upd   30 R +0.3128 EV +0.03 kl -0.0000 clip 0.00 val 0.26829646364253973 273s
+seed 2: best validation reward 0.2683

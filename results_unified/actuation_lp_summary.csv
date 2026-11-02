@@ -1,0 +1,21 @@
+topology,scenario,load,method,reward,reward_sd,loss_pct,delay_ms,mlu,groups_per_decision
+Geant2012,microburst,0.9,LP-clairvoyant(current TM),0.37422,0.02902,0.26537,16.1717,0.62351,100.30653
+Geant2012,microburst,0.9,LP-reactive(last TM),0.36319,0.03274,0.32161,16.42161,0.79955,100.65427
+Geant2012,pareto,0.5,LP-clairvoyant(current TM),0.4676,0.00638,-0.0,13.92588,0.30228,94.73367
+Geant2012,pareto,0.5,LP-reactive(last TM),0.46831,0.00595,-0.0,13.90764,0.38926,95.04623
+Geant2012,pareto,0.8,LP-clairvoyant(current TM),0.46049,0.00733,-0.0,14.11165,0.48365,99.05628
+Geant2012,pareto,0.8,LP-reactive(last TM),0.4555,0.0094,-0.0,14.23961,0.62132,99.29849
+Geant2012,pareto,0.95,LP-clairvoyant(current TM),0.444,0.01514,-0.0,14.54928,0.57434,99.9206
+Geant2012,pareto,0.95,LP-reactive(last TM),0.43409,0.01707,-0.0,14.80162,0.73805,100.19598
+Geant2012,pareto,1.1,LP-clairvoyant(current TM),0.40976,0.02798,0.01803,15.41279,0.66502,100.77688
+Geant2012,pareto,1.1,LP-reactive(last TM),0.39306,0.03471,0.01877,15.84636,0.85507,101.02513
+nsfnet,microburst,0.9,LP-clairvoyant(current TM),0.26841,0.08092,0.87568,16.17123,0.6089,29.80101
+nsfnet,microburst,0.9,LP-reactive(last TM),0.23589,0.08743,1.27569,16.63124,0.89455,29.93367
+nsfnet,pareto,0.5,LP-clairvoyant(current TM),0.44858,0.02789,-0.0,12.56886,0.31804,28.02111
+nsfnet,pareto,0.5,LP-reactive(last TM),0.44789,0.02564,-0.0,12.58845,0.44975,28.06533
+nsfnet,pareto,0.8,LP-clairvoyant(current TM),0.41602,0.04536,0.02056,13.31276,0.50887,28.06935
+nsfnet,pareto,0.8,LP-reactive(last TM),0.38883,0.04391,0.03938,13.94599,0.71953,28.11658
+nsfnet,pareto,0.95,LP-clairvoyant(current TM),0.35668,0.09967,0.37407,14.46237,0.60428,28.04422
+nsfnet,pareto,0.95,LP-reactive(last TM),0.31631,0.09327,0.40744,15.38785,0.8548,28.09447
+nsfnet,pareto,1.1,LP-clairvoyant(current TM),0.27664,0.13915,0.78871,16.06918,0.69969,28.05226
+nsfnet,pareto,1.1,LP-reactive(last TM),0.21992,0.13931,0.97543,17.25053,0.98983,28.1005

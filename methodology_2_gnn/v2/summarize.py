@@ -128,7 +128,7 @@ def failure():
 
 
 def curves():
-    fs = sorted(glob.glob(os.path.join(RES, "zero_shot_seed*", "gnn_training_curve.csv")))
+    fs = sorted(glob.glob(os.path.join(RES, "zero_shot_seed[0-9]", "gnn_training_curve.csv")))
     if not fs:
         return
     fig, ax = plt.subplots(figsize=(5.2, 3.0))

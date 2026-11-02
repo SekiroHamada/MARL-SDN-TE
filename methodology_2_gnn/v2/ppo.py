@@ -20,6 +20,30 @@ import torch
 
 from te_sim import TESimulator
 from policies import logprob_per_graph
+try:
+    from environments.actuation import churn_fraction
+except ImportError:                                   # run from methodology_2_gnn/v2
+    import sys as _sys
+    _sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+    from environments.actuation import churn_fraction
+
+
+def held_step(sim, shadow, P_sp, cost, gam, hold, churn_penalty, P_prev):
+    """Actuation-aware step: install the split for `hold` simulator steps, then
+    charge churn_penalty x share of forwarding groups re-installed.
+    Returns obs, reward (minus shadow OSPF if given), info, P."""
+    P = sim.routing_matrix(cost, "softmin", gamma=gam)
+    churn = churn_fraction(P_prev, P) if P_prev is not None else 0.0
+    infos, r_raw, r_sh = [], [], []
+    for _ in range(hold):
+        obs, r, info = sim.step(P=P)
+        infos.append(info); r_raw.append(r)
+        if shadow is not None:
+            r_sh.append(shadow.step(P=P_sp)[1])
+    info = {k: float(np.mean([i[k] for i in infos])) for k in infos[0]}
+    info["churn_frac"] = churn
+    r = info["reward"] - (float(np.mean(r_sh)) if r_sh else 0.0) - churn_penalty * churn
+    return obs, r, info, P
 
 
 def set_seed(s):
@@ -45,9 +69,10 @@ class EnvSlot:
         self.P_sp = self.shadow.routing_matrix(self.shadow.ospf_costs(), "sp") if self.use_shadow else None
         self.obs = self.sim.observe()
         self.t = 0
+        self.P_prev = None
 
 
-def collect(model, slots, steps):
+def collect(model, slots, steps, hold=1, churn_penalty=0.0):
     buf = dict(obs=[], act=[], logp=[], val=[], rew=[], done=[], last_val=None, infos=[])
     for _ in range(steps):
         obs = [s.obs for s in slots]
@@ -63,12 +88,18 @@ def collect(model, slots, steps):
             ai, lpi = a[m], lp[m]
             acts.append(ai); lps.append(lpi)
             cost, gam = s.sim.decode_action(ai.numpy())
-            obs_next, r, info = s.sim.step(cost, gamma=gam)
-            s.obs, s.t = obs_next, s.t + 1
-            buf["infos"].append(info)
-            if s.shadow is not None:
-                _, r_sh, _ = s.shadow.step(P=s.P_sp)
-                r = r - r_sh
+            if hold > 1 or churn_penalty > 0:
+                obs_next, r, info, s.P_prev = held_step(s.sim, s.shadow, s.P_sp, cost, gam, hold,
+                                                        churn_penalty, s.P_prev)
+                s.obs, s.t = obs_next, s.t + 1
+                buf["infos"].append(info)
+            else:
+                obs_next, r, info = s.sim.step(cost, gamma=gam)
+                s.obs, s.t = obs_next, s.t + 1
+                buf["infos"].append(info)
+                if s.shadow is not None:
+                    _, r_sh, _ = s.shadow.step(P=s.P_sp)
+                    r = r - r_sh
             rews.append(r)
             done = s.t >= s.ep_len
             dones.append(done)
@@ -137,19 +168,25 @@ def ppo_update(model, opt, buf, adv, ret, cfg):
     return np.mean(stats, 0)
 
 
-def evaluate(model, cases, steps, deterministic=True):
-    """cases: list of (graph, load, seed). Returns mean reward and metric dict."""
+def evaluate(model, cases, steps, deterministic=True, hold=1, churn_penalty=0.0):
+    """cases: list of (graph, load, seed). Returns mean metrics; 'objective' =
+    reward - churn_penalty x churn share (= reward in the original setting)."""
     infos = []
     for G, load, seed in cases:
         sim = TESimulator(G, load=load, seed=seed)
-        obs = sim.observe()
+        obs, P_prev = sim.observe(), None
         for _ in range(steps):
             with torch.no_grad():
                 mu, _, _ = model([obs], with_value=False)
             cost, gam = sim.decode_action(mu.numpy())
-            obs, r, info = sim.step(cost, gamma=gam)
+            if hold > 1 or churn_penalty > 0:
+                obs, _, info, P_prev = held_step(sim, None, None, cost, gam, hold, churn_penalty, P_prev)
+            else:
+                obs, r, info = sim.step(cost, gamma=gam)
             infos.append(info)
-    return {k: float(np.mean([i[k] for i in infos])) for k in infos[0]}
+    out = {k: float(np.mean([i[k] for i in infos])) for k in infos[0]}
+    out["objective"] = out["reward"] - churn_penalty * out.get("churn_frac", 0.0)
+    return out
 
 
 def train(model, sampler, cfg, out_dir, val_cases=None, tag="gnn"):
@@ -167,8 +204,9 @@ def train(model, sampler, cfg, out_dir, val_cases=None, tag="gnn"):
     for u in range(1, cfg["updates"] + 1):
         for g in opt.param_groups:                       # linear LR decay
             g["lr"] = cfg["lr"] * (1 - (u - 1) / cfg["updates"])
-        buf = collect(model, slots, cfg["rollout_len"])
-        env_steps += cfg["rollout_len"] * cfg["n_envs"]
+        hold, cp = int(cfg.get("hold", 1)), float(cfg.get("churn_penalty", 0.0))
+        buf = collect(model, slots, cfg["rollout_len"], hold, cp)
+        env_steps += cfg["rollout_len"] * cfg["n_envs"] * hold
         adv, ret = gae(buf, cfg["gamma"], cfg["lam"])
         st = ppo_update(model, opt, buf, adv, ret, cfg)
         tr = float(np.mean([i["reward"] for i in buf["infos"]]))     # raw reward, not differenced
@@ -176,7 +214,7 @@ def train(model, sampler, cfg, out_dir, val_cases=None, tag="gnn"):
         td = float(np.mean([i["avg_delay_ms"] for i in buf["infos"]]))
         vr = ""
         if val_cases and (u % cfg["eval_every"] == 0 or u == cfg["updates"]):
-            vr = evaluate(model, val_cases, cfg["eval_steps"])["reward"]
+            vr = evaluate(model, val_cases, cfg["eval_steps"], hold=hold, churn_penalty=cp)["objective"]
             if vr > best:
                 best = vr
                 torch.save(model.state_dict(), os.path.join(out_dir, f"{tag}_best.pt"))

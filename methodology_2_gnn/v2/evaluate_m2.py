@@ -73,7 +73,7 @@ def load_gnn(path, cfg):
 
 
 def zero_shot_ckpts():
-    return sorted(glob.glob(os.path.join(RES, "zero_shot_seed*", "gnn_best.pt")))
+    return sorted(glob.glob(os.path.join(RES, "zero_shot_seed[0-9]", "gnn_best.pt")))
 
 
 class TabularSpecialist:

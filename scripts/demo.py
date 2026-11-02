@@ -201,9 +201,9 @@ def part_m2(a):
     ms2 = [(l, m) for l, m in ms2 if l in ("OSPF", "ECMP-hop", "M2 GNN zero-shot")]
     res2 = race(G2, ms2, a.load, a.steps)
     table(res2, [l for l, _ in ms2])
-    say("This is the paper's headline: 81% of a topology-specific model's gain",
-        "over OSPF is retained with zero training on the target, and the policy",
-        "beats OSPF on 90% of 98 real wide-area networks.")
+    say("This is the paper's headline (mean of 3 training seeds): 81% of a",
+        "topology-specific model's gain over OSPF is retained with zero training on",
+        "the target, and the policy beats OSPF on 83% of 98 real wide-area networks.")
 
 
 # ---------------------------------------------------------------- part: m3

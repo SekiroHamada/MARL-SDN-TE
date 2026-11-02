@@ -27,6 +27,15 @@ if __name__ == "__main__":
     ap.add_argument("--iters", type=int, default=None, help="MADDPG / QMIX iterations (default 5000 / 6000)")
     ap.add_argument("--scenario", default="pareto", choices=["poisson", "pareto", "microburst"])
     ap.add_argument("--out", default=os.path.join(ROOT, "results_marl"))
+    ap.add_argument("--hold", type=int, default=1, help="MAPPO: decision interval in 10 ms steps (actuation-aware)")
+    ap.add_argument("--churn-penalty", type=float, default=0.0, help="MAPPO: reward cost per share of groups re-installed")
+    ap.add_argument("--init", default=None, help="MAPPO: fine-tune from this run folder's best actor")
+    ap.add_argument("--suffix", default="", help="appended to the run folder name")
+    ap.add_argument("--lr", type=float, default=None, help="MAPPO: actor and critic learning rate")
+    ap.add_argument("--n-envs", type=int, default=None)
+    ap.add_argument("--eval-every", type=int, default=None)
+    ap.add_argument("--eval-steps", type=int, default=None, help="validation decisions per case")
+    ap.add_argument("--rollout", type=int, default=None, help="MAPPO: decisions per rollout and per episode")
     a = ap.parse_args()
     G = load_named(a.topology)
     fn = dict(mappo=train_mappo, maddpg=train_maddpg, qmix=train_qmix)[a.algo]
@@ -34,7 +43,16 @@ if __name__ == "__main__":
         over = dict(seed=s, scenario=a.scenario)
         if a.updates and a.algo == "mappo": over["updates"] = a.updates
         if a.iters and a.algo in ("maddpg", "qmix"): over["iters"] = a.iters
-        out = os.path.join(a.out, f"{a.algo}_{a.topology}_seed{s}")
+        if a.algo == "mappo" and (a.hold > 1 or a.churn_penalty > 0 or a.init):
+            over.update(hold=a.hold, churn_penalty=a.churn_penalty)
+            if a.lr: over.update(lr_actor=a.lr, lr_critic=a.lr)
+            if a.n_envs: over["n_envs"] = a.n_envs
+            if a.eval_every: over["eval_every"] = a.eval_every
+            if a.eval_steps: over["eval_steps"] = a.eval_steps
+            if a.rollout: over.update(rollout_len=a.rollout, episode_len=a.rollout)
+            if a.init:
+                over["init_actor"] = os.path.join(a.init.replace("{seed}", str(s)), f"{a.algo}_actor_best.pt")
+        out = os.path.join(a.out, f"{a.algo}_{a.topology}_seed{s}{a.suffix}")
         best = fn(G, out, tag=a.algo, **over)
         json.dump(dict(algo=a.algo, topology=a.topology, seed=s, best_val_reward=best, overrides=over),
                   open(os.path.join(out, "meta.json"), "w"), indent=1)
